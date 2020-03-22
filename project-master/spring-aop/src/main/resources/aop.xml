@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="helloWorldImpl1" class="com.yc.aop1.HelloWorldImpl1"></bean>
+    <bean id="helloWorldImpl2" class="com.yc.aop1.HelloWorldImpl2"></bean>
+    <bean id="timeHandler" class="com.yc.aop1.TimeHandler"></bean>
+
+    <!--Spring+AspectJ基于配置-->
+    <aop:config>
+        <!--aspect切面-->
+        <aop:aspect id="time" ref="timeHandler">
+            <!--切点-->
+            <aop:pointcut id="addAllMethod" expression="execution(* com.yc.aop1.*.*(..))"/>
+            <!--通知方式-->
+            <aop:before method="printCurrentTime" pointcut-ref="addAllMethod"></aop:before>
+            <aop:after method="printCurrentTime" pointcut-ref="addAllMethod"></aop:after>
+        </aop:aspect>
+    </aop:config>
+    <!--开启注解器-->
+    <bean id="cookA" class="com.yc.aop2.CookA"></bean>
+    <bean id="joinPointAspect" class="com.yc.aop2.JoinPointAspect"></bean>
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+</beans>
