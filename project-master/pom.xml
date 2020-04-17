@@ -6,6 +6,7 @@
 	<modules>
 		<module>fileUpload</module>
 		<module>spring-aop</module>
+	        <module>redis-master</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -21,6 +22,14 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<pagehelper-starter.version>1.2.10</pagehelper-starter.version>
+		<pagehelper.version>5.1.8</pagehelper.version>
+		<druid.version>1.1.10</druid.version>
+		<hutool.version>4.5.7</hutool.version>
+		<swagger2.version>2.7.0</swagger2.version>
+		<mybatis-generator.version>1.3.7</mybatis-generator.version>
+		<mybatis.version>3.4.6</mybatis.version>
+		<mysql-connector.version>8.0.15</mysql-connector.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -28,19 +37,25 @@
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
+		<!--Hutool Java工具包-->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>${hutool.version}</version>
 		</dependency>
-	</dependencies>
+		<!--Swagger-UI API文档生产工具-->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger2.version}</version>
+		</dependency>
 
+	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
