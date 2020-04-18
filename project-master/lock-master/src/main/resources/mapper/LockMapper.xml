@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.mapper.LockMapper">
+    <select id="getLockById" resultType="com.yc.entity.Lock" parameterType="java.lang.Integer">
+       SELECT * FROM `lock`  where uid = #{id}
+    </select>
+
+    <insert id="addLock" parameterType="com.yc.entity.Lock">
+        INSERT INTO `lock`  (uid,lockName) VALUES (#{uid},#{lockName});
+    </insert>
+
+    <update id="updateLock1" parameterType="com.yc.entity.Lock">
+        UPDATE `lock` SET times= #{times} WHERE uid = #{uid}
+    </update>
+
+    <select id="getLockByIdForUpdate" resultType="com.yc.entity.Lock" parameterType="java.lang.Integer">
+       SELECT * FROM `lock`  where uid = #{id} for update
+    </select>
+</mapper>
